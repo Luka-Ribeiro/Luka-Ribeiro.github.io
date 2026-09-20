@@ -1,0 +1,217 @@
+/* --- VARIABLES --- */
+:root {
+    --bg-dark: #0a0a0c;
+    --panel-bg: #111318;
+    --neon-yellow: #f1c40f; /* Clin d'oeil Renault / Cyber */
+    --neon-cyan: #00f3ff;
+    --text-main: #a9b7c6;
+    --text-muted: #5c6773;
+    --border-color: #2a2e38;
+}
+
+/* --- RESET & FONTS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Effet de scanline d'écran (optionnel, donne un effet terminal) */
+.scanlines {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* --- HEADER / NAV --- */
+.hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+.logo {
+    color: var(--neon-cyan);
+    font-size: 1.4rem;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
+}
+
+/* --- BOUTONS --- */
+.btn-neon {
+    display: inline-block;
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+    padding: 8px 15px;
+    background: rgba(0, 243, 255, 0.05);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-neon:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.mb-20 { margin-bottom: 20px; }
+
+/* --- MAIN CONTAINER --- */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- PANELS (Sections) --- */
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+/* Coins style Sci-Fi */
+.panel::before, .panel::after {
+    content: ''; position: absolute; width: 15px; height: 15px; border-color: var(--neon-yellow); border-style: solid;
+}
+.panel::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.panel::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+.panel-header {
+    background: #1a1e26;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h2 {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.panel-content {
+    padding: 30px;
+}
+
+/* --- SPECIFIQUE PROFIL --- */
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.text-zone h1 { color: var(--neon-cyan); font-size: 2.2rem; margin-bottom: 5px; }
+.subtitle { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 20px; }
+.pitch { max-width: 600px; }
+
+.stats-zone {
+    border-left: 2px solid var(--border-color);
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.status-ok { color: #00ff66; text-shadow: 0 0 5px #00ff66; }
+.highlight { color: var(--neon-yellow); }
+
+/* --- GRILLES --- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.data-block {
+    padding: 15px;
+    background: rgba(255,255,255,0.02);
+    border-left: 3px solid var(--neon-yellow);
+}
+.data-block h4 { color: var(--neon-yellow); margin-bottom: 10px; }
+
+/* --- CARTES PROJETS --- */
+.cyber-card {
+    background: #161920;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    transition: 0.3s;
+    position: relative;
+}
+.cyber-card:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-5px);
+}
+.card-top {
+    font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color); padding-bottom: 5px;
+}
+.cyber-card h3 {
+    color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;
+}
+.cyber-card p {
+    font-size: 0.95rem; color: #8a96a3;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 50px;
+    background: var(--panel-bg);
+}
+.footer-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; }
+.social-links a {
+    color: var(--neon-yellow);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+.social-links a:hover { text-shadow: 0 0 8px var(--neon-yellow); }

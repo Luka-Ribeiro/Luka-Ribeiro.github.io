@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Coordinateur SI</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Police technique pour le style Terminal/HUD -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HUD OVERLAY : Effet visuel de scan d'écran -->
+    <div class="scanlines"></div>
+
+    <header class="hud-header">
+        <div class="logo">
+            <span class="blink">>_</span> SYS_ADMIN_PORTFOLIO
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#profil">[ PROFIL ]</a></li>
+                <li><a href="#missions">[ MISSIONS_ENTREPRISE ]</a></li>
+                <li><a href="#projets">[ PROJETS_E4 ]</a></li>
+                <!-- [ INSERER LE LIEN DE TA PAGE VEILLE ICI ] -->
+                <li><a href="veille.html">[ VEILLE_TECH ]</a></li>
+                <!-- [ INSERER LE LIEN DE TON CV PDF ICI ] -->
+                <li><a href="CV_Luka.pdf" target="_blank" class="btn-neon">[ DL_CV.exe ]</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECTION PROFIL -->
+        <section id="profil" class="panel">
+            <div class="panel-header">
+                <h2>// ID_UTILISATEUR</h2>
+            </div>
+            <div class="panel-content flex-row">
+                <div class="text-zone">
+                    <h1>Luka Ribeiro Da Costa</h1>
+                    <h3 class="subtitle">Coordinateur des Systèmes d'Information - Alternant BTS SIO SISR</h3>
+                    <!-- [ INSERER TA PRESENTATION GAUTHIER ICI LORSQUE TU SERAS PRET (RGPD OK) ] -->
+                    <p class="pitch">
+                        <!-- Texte temporaire à remplacer -->
+                        [ COMMENTAIRE : Insérer ici le texte de présentation rédigé. Garder un ton factuel et orienté infrastructure. ] 
+                        Actuellement en charge de l'infrastructure informatique de 3 concessions au sein du groupe Renault. 
+                        J'assure le maintien en conditions opérationnelles, la sécurité des accès et le déploiement matériel.
+                    </p>
+                </div>
+                <div class="stats-zone">
+                    <p>STATUT : <span class="status-ok">EN LIGNE</span></p>
+                    <p>LOCALISATION : <span class="highlight">RENAULT (3 Concessions)</span></p>
+                    <p>HABILITATION : <span class="highlight">ADMIN_NIV_2</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION MISSIONS ENTREPRISE -->
+        <section id="missions" class="panel">
+            <div class="panel-header">
+                <h2>// LOGS_MISSIONS_ENTREPRISE</h2>
+            </div>
+            <div class="panel-content grid-2">
+                <div class="data-block">
+                    <h4>> Support & Parc</h4>
+                    <p>Administration du parc informatique via <strong>PSSoft</strong>. Gestion complète du cycle de vie utilisateur (Onboarding / Offboarding) et contrôles de cohérence des droits et matériels.</p>
+                </div>
+                <div class="data-block">
+                    <h4>> Déploiement</h4>
+                    <p>Pilotage des campagnes de masterisation de postes de travail et renouvellement des flottes de smartphones pour les collaborateurs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION PROJETS E4 -->
+        <section id="projets" class="panel">
+            <div class="panel-header">
+                <h2>// EXTRACTION_PROJETS_E4</h2>
+            </div>
+            <!-- [ INSERER LE LIEN VERS TON TABLEAU DE SYNTHESE E4 ICI ] -->
+            <a href="Tableau_Synthese_E4.pdf" target="_blank" class="btn-neon mb-20">>> TELECHARGER_TABLEAU_SYNTHESE_E4</a>
+            
+            <div class="grid-3">
+                <!-- PROJET 1 -->
+                <div class="cyber-card">
+                    <div class="card-top">ID: PRJ-01</div>
+                    <h3>Administration Active Directory & Services</h3>
+                    <p><strong>Environnement :</strong> Windows Server</p>
+                    <p>Gestion avancée de l'AD, création et application de GPO pour sécuriser l'environnement utilisateur. Installation et configuration du rôle DHCP pour l'adressage client.</p>
+                </div>
+
+                <!-- PROJET 2 -->
+                <div class="cyber-card">
+                    <div class="card-top">ID: PRJ-02</div>
+                    <h3>Routage Avancé & Sécurité</h3>
+                    <p><strong>Environnement :</strong> Cisco / IPFire</p>
+                    <p>Mise en place d'un routage inter-VLAN dynamique utilisant le protocole OSPF. Déploiement et configuration d'un pare-feu IPFire pour segmenter et protéger le réseau.</p>
+                </div>
+
+                <!-- PROJET 3 -->
+                <div class="cyber-card">
+                    <div class="card-top">ID: PRJ-03</div>
+                    <h3>Gestion de Parc Open Source</h3>
+                    <p><strong>Environnement :</strong> GLPI</p>
+                    <p>Déploiement en environnement scolaire d'une solution GLPI pour la gestion des incidents (Ticketing) et l'inventaire matériel, en miroir des process PSSoft utilisés en entreprise.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>CONNEXION SECURISEE // BTS SIO SISR 2026 // LUKA RIBEIRO DA COSTA</p>
+            <!-- [ INSERER TON LIEN LINKEDIN ET GITHUB ICI EN REMPLACANT LE # ] -->
+            <div class="social-links">
+                <a href="#">[ LINKEDIN ]</a>
+                <a href="#">[ GITHUB ]</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

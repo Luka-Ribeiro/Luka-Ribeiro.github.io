@@ -268,6 +268,8 @@
                 <button class="filter-btn" onclick="filterProjects('ecole', this)">🎓 École & Homelab</button>
                 <button class="filter-btn" onclick="filterProjects('e4', this)">📋 Épreuve E4 (Parc & Services)</button>
                 <button class="filter-btn" onclick="filterProjects('e5', this)">🛡️ Épreuve E5 (Infra & Cyber)</button>
+                <!-- 🟢 NOUVEAU FILTRE SLAM / DEV WEB -->
+                <button class="filter-btn" onclick="filterProjects('slam', this)">💻 Dev Web & SLAM</button>
             </div>
 
             <!-- Grille des cartes de projets -->
@@ -356,7 +358,19 @@
                     </div>
                     <button class="btn-card" onclick="openProjectModal('prj6')">Voir les détails & preuves →</button>
                 </div>
-
+                <!-- PROJET 7 : LEBONCOIN (SLAM / WEB) -->
+                <div class="bento-card project-card" data-category="ecole e4 slam">
+                    <div class="project-top">
+                        <span class="badge badge-cyan">École / Dev Web</span>
+                        <span class="badge badge-outline">E4 & Polyvalence SLAM</span>
+                    </div>
+                    <h4>Plateforme d'Annonces Type "Leboncoin"</h4>
+                    <p>Développement et hébergement d'une application web dynamique de petites annonces avec gestion de base de données et authentification.</p>
+                    <div class="tech-tags">
+                        <span>PHP / SQL</span><span>JavaScript</span><span>HTML / CSS</span>
+                    </div>
+                    <button class="btn-card" onclick="openProjectModal('prj7')">Voir les détails & preuves →</button>
+                </div>
             </div>
         </section>
 

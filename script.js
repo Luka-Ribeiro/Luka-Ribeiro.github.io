@@ -23,7 +23,7 @@ const terminalOutput = document.getElementById('terminal-output');
 const commandsData = {
     help: "Commandes disponibles : <br>- <b>whoami</b> : Profil & Alternance<br>- <b>skills</b> : Compétences techniques SISR<br>- <b>renault</b> : Périmètre des 3 concessions<br>- <b>clear</b> : Effacer l'écran",
     whoami: "Luka Ribeiro Da Costa — Alternant Coordinateur des Systèmes d'Information chez Renault. Étudiant en BTS SIO option SISR.",
-    skills: "Réseau : VLAN, Routage OSPF, Firewall IPFire, LAN/WAN.<br>Système : Windows Server, Active Directory, GPO, DHCP, Masterisation.<br>Parc & ITSM : PSSoft, GLPI, Onboarding/Offboarding.",
+    skills: "Réseau : VLAN, Routage OSPF, Firewall IPFire, LAN/WAN.<br>Système : Windows Server, Active Directory, GPO, DHCP, Masterisation.<br>Parc & ITSM : PSSoft, GLPI, Onboarding/Offboarding.<br>Dev Web (Polyvalence SLAM) : PHP, SQL, JavaScript, HTML5, CSS3.",
     renault: "Gestion de 3 concessions automobiles : Support N2, maintien des locaux techniques, cartographie SI, gestion de la téléphonie, participation au Codir et reporting RSI Plaque."
 };
 
@@ -227,7 +227,7 @@ const projectsDetails = {
         skills: "Sécuriser les équipements et les usages des utilisateurs • Administrer un pare-feu",
         docLink: "doc_ipfire.pdf" // 🔗 Nom de ta future documentation PDF
     },
-    prj6: {
+   prj6: {
         title: "Déploiement d'une Solution de Gestion de Parc & Ticketing GLPI",
         tags: ["École / Homelab", "Épreuve E4", "ITSM / Linux"],
         context: "Mise en œuvre en environnement d'école d'un outil Open Source d'inventaire et de gestion des incidents, permettant de comparer son fonctionnement avec l'outil PSSoft utilisé chez Renault.",
@@ -237,7 +237,23 @@ const projectsDetails = {
             "Simulation du traitement d'incidents N1/N2 et suivi des indicateurs de résolution (SLA)."
         ],
         skills: "Gérer le patrimoine informatique • Répondre aux incidents et aux demandes d'assistance et d'évolution",
-        docLink: "doc_glpi.pdf" // 🔗 Nom de ta future documentation PDF
+        docLink: "doc_glpi.pdf"
+    }, // ⚠️ N'oublie pas cette virgule après prj6 !
+
+    // 🟢 NOUVEAU PROJET 7 : LEBONCOIN (SLAM)
+    prj7: {
+        title: "Développement & Hébergement d'une Plateforme Type 'Leboncoin'",
+        tags: ["École / Projet Web", "Épreuve E4", "Polyvalence SLAM"],
+        // 🔴 [À MODIFIER SI BESOIN] : Adapte selon les fonctionnalités exactes de ton site
+        context: "Conception d'une plateforme web dynamique de publication et de consultation de petites annonces, démontrant ma polyvalence technique (Dev & Infra) acquise en BTS SIO.",
+        tasks: [
+            "Développement Front-End de l'interface utilisateur et des filtres interactifs (HTML5, CSS3, JavaScript).",
+            "Développement Back-End en PHP : système d'inscription/connexion, dépôt d'annonces et liaison avec la base de données SQL.",
+            "Mise en place de l'environnement serveur web local (Apache / MySQL) et sécurisation des entrées utilisateurs."
+        ],
+        skills: "Développer la présence en ligne de l'organisation • Travailler en mode projet • Mettre à disposition des utilisateurs un service informatique",
+        // 🔗 [LIEN À REMPLACER] : Tu peux mettre le lien vers un PDF de présentation OU le lien vers ton dépôt GitHub du projet Leboncoin !
+        docLink: "doc_leboncoin.pdf"
     }
 };
 

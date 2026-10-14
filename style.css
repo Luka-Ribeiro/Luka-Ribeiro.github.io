@@ -1,217 +1,691 @@
-/* --- VARIABLES --- */
-:root {
-    --bg-dark: #0a0a0c;
-    --panel-bg: #111318;
-    --neon-yellow: #f1c40f; /* Clin d'oeil Renault / Cyber */
-    --neon-cyan: #00f3ff;
-    --text-main: #a9b7c6;
-    --text-muted: #5c6773;
-    --border-color: #2a2e38;
+/* ==========================================================================
+   1. VARIABLES DE COULEURS (THÈME SOMBRE CYBER PAR DÉFAUT + THÈME CLAIR PRO)
+   ========================================================================== */
+:root[data-theme="dark"] {
+    --bg-main: #090d16;
+    --bg-card: rgba(17, 24, 39, 0.75);
+    --bg-card-hover: rgba(31, 41, 55, 0.9);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --accent-gold: #f59e0b;      /* Clin d'œil identité visuelle Renault */
+    --accent-cyan: #06b6d4;      /* Esprit Réseau / SISR */
+    --accent-green: #10b981;     /* Statut Opérationnel */
+    --terminal-bg: #05080f;
 }
 
-/* --- RESET & FONTS --- */
+:root[data-theme="light"] {
+    --bg-main: #f3f4f6;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f9fafb;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
+    --accent-gold: #d97706;
+    --accent-cyan: #0284c7;
+    --accent-green: #059669;
+    --terminal-bg: #111827;      /* Le terminal reste sombre pour le réalisme */
+}
+
+/* ==========================================================================
+   2. RÉGLAGES GÉNÉRAUX
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Share Tech Mono', monospace;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+    background-image: radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.06), transparent 35%),
+                      radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.05), transparent 35%);
 }
 
-/* Effet de scanline d'écran (optionnel, donne un effet terminal) */
-.scanlines {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-    background-size: 100% 4px, 3px 100%;
-    pointer-events: none;
-    z-index: 9999;
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-/* --- HEADER / NAV --- */
-.hud-header {
+.accent-gold { color: var(--accent-gold); }
+.accent-cyan { color: var(--accent-cyan); }
+
+/* ==========================================================================
+   3. BARRE DE NAVIGATION
+   ========================================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    background: var(--panel-bg);
+    padding: 16px 40px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
 }
 
-.logo {
-    color: var(--neon-cyan);
-    font-size: 1.4rem;
-}
-
-.blink {
-    animation: blinker 1s linear infinite;
-}
-@keyframes blinker {
-    50% { opacity: 0; }
-}
-
-nav ul {
-    list-style: none;
+.nav-brand {
     display: flex;
-    gap: 25px;
     align-items: center;
-}
-
-nav a {
-    color: var(--text-main);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1rem;
-    transition: 0.2s;
-}
-
-nav a:hover {
-    color: var(--neon-yellow);
-    text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
-}
-
-/* --- BOUTONS --- */
-.btn-neon {
-    display: inline-block;
-    color: var(--neon-cyan);
-    border: 1px solid var(--neon-cyan);
-    padding: 8px 15px;
-    background: rgba(0, 243, 255, 0.05);
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.btn-neon:hover {
-    background: var(--neon-cyan);
-    color: var(--bg-dark);
-    box-shadow: 0 0 15px var(--neon-cyan);
-}
-
-.mb-20 { margin-bottom: 20px; }
-
-/* --- MAIN CONTAINER --- */
-main {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-/* --- PANELS (Sections) --- */
-.panel {
-    background: var(--panel-bg);
-    border: 1px solid var(--border-color);
-    position: relative;
-}
-
-/* Coins style Sci-Fi */
-.panel::before, .panel::after {
-    content: ''; position: absolute; width: 15px; height: 15px; border-color: var(--neon-yellow); border-style: solid;
-}
-.panel::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-.panel::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
-
-.panel-header {
-    background: #1a1e26;
-    padding: 10px 20px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.panel-header h2 {
-    color: var(--text-muted);
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
     font-size: 1.1rem;
 }
 
-.panel-content {
-    padding: 30px;
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-green);
+    animation: pulse 2s infinite;
 }
 
-/* --- SPECIFIQUE PROFIL --- */
-.flex-row {
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.nav-links {
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.nav-highlight {
+    color: var(--accent-cyan);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ==========================================================================
+   4. BOUTONS & BADGES
+   ========================================================================== */
+.btn-primary, .btn-secondary, .btn-outline, .btn-gold, .btn-icon {
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--accent-cyan);
+    color: #fff;
+    border: none;
+}
+.btn-primary:hover {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+}
+
+.btn-gold {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+}
+.btn-gold:hover {
+    background: var(--accent-gold);
+    color: #000;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+    border-color: var(--accent-cyan);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-icon {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.badge-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+}
+.badge-gold { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); border: 1px solid rgba(245, 158, 11, 0.3); }
+.badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+.badge-outline { border: 1px solid var(--border-color); color: var(--text-secondary); }
+
+/* ==========================================================================
+   5. CARTES BENTO & HERO SECTION
+   ========================================================================== */
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 28px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.bento-card:hover {
+    border-color: rgba(6, 182, 212, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.bento-hero {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+}
+
+.hero-profile h1 {
+    font-size: 2.4rem;
+    margin-bottom: 4px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--accent-cyan);
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.hero-description {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.kpi-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+}
+
+.kpi-number {
+    display: block;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.kpi-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
     flex-wrap: wrap;
 }
-.text-zone h1 { color: var(--neon-cyan); font-size: 2.2rem; margin-bottom: 5px; }
-.subtitle { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 20px; }
-.pitch { max-width: 600px; }
 
-.stats-zone {
-    border-left: 2px solid var(--border-color);
+/* ==========================================================================
+   6. TERMINAL INTERACTIF (CLI)
+   ========================================================================== */
+.terminal-card {
+    background: var(--terminal-bg);
+    color: #e5e7eb;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-header {
+    background: #1f2937;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.terminal-dots { display: flex; gap: 6px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #10b981; }
+
+.terminal-title { font-size: 0.8rem; color: #9ca3af; }
+
+.terminal-body {
+    padding: 18px;
+    height: 230px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cmd-user { color: #fbbf24; }
+.cmd-response { color: #d1d5db; padding-left: 10px; border-left: 2px solid #06b6d4; }
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+}
+
+.prompt { color: #10b981; margin-right: 10px; font-size: 0.85rem; }
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    width: 100%;
+    outline: none;
+}
+
+.terminal-shortcuts {
+    padding: 10px 18px;
+    background: #111827;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.terminal-shortcuts button {
+    background: rgba(6, 182, 212, 0.12);
+    color: #06b6d4;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.terminal-shortcuts button:hover {
+    background: #06b6d4;
+    color: #000;
+}
+
+/* ==========================================================================
+   7. SECTIONS & TOPOLOGIE RÉSEAU INTERACTIVE
+   ========================================================================== */
+.section-block {
+    margin-top: 64px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+}
+
+.section-header h3 {
+    font-size: 1.7rem;
+}
+
+.section-hint {
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+}
+
+.topology-container {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+}
+
+.topology-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.topo-level {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.topo-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.topo-connector-vertical {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-gold));
+}
+
+.topo-node {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: 0.25s;
+    width: 100%;
+    max-width: 240px;
+}
+
+.topo-node:hover, .topo-node.active {
+    border-color: var(--accent-gold);
+    background: rgba(245, 158, 11, 0.1);
+    transform: translateY(-3px);
+}
+
+.node-icon { font-size: 1.6rem; margin-bottom: 6px; }
+.node-title { font-weight: 700; font-size: 0.9rem; }
+.node-sub { font-size: 0.75rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; }
+
+.topology-details h4 {
+    font-size: 1.4rem;
+    margin: 10px 0;
+}
+
+.topology-details p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.topo-meta h5 {
+    margin-bottom: 10px;
+    color: var(--accent-gold);
+}
+
+.topo-meta ul {
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.topo-meta li { margin-bottom: 6px; }
+
+/* ==========================================================================
+   8. MISSIONS & CARTES PROJETS (FILTRABLES)
+   ========================================================================== */
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.mission-card h4 {
+    font-size: 1.15rem;
+    margin: 10px 0 12px;
+    color: var(--accent-gold);
+}
+
+.mission-card ul {
+    padding-left: 18px;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+.mission-card li { margin-bottom: 8px; }
+
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.filter-btn {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: 0.2s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--accent-cyan);
+    color: #fff;
+    border-color: var(--accent-cyan);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.project-card h4 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.tech-tags span {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.btn-card {
+    background: transparent;
+    color: var(--accent-cyan);
+    border: 1px solid rgba(6, 182, 212, 0.4);
+    padding: 9px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-card:hover {
+    background: var(--accent-cyan);
+    color: #fff;
+}
+
+/* ==========================================================================
+   9. PARCOURS, MODALE & FOOTER
+   ========================================================================== */
+.timeline-Wrapper {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+}
+
+.timeline {
+    border-left: 2px solid var(--accent-cyan);
+    margin-top: 20px;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-.status-ok { color: #00ff66; text-shadow: 0 0 5px #00ff66; }
-.highlight { color: var(--neon-yellow); }
-
-/* --- GRILLES --- */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 24px;
 }
 
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+.timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent-gold);
 }
 
-.data-block {
-    padding: 15px;
+.timeline-place {
+    font-size: 0.88rem;
+    color: var(--accent-cyan);
+    margin-bottom: 6px;
+}
+
+.cert-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cert-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 10px;
     background: rgba(255,255,255,0.02);
-    border-left: 3px solid var(--neon-yellow);
-}
-.data-block h4 { color: var(--neon-yellow); margin-bottom: 10px; }
-
-/* --- CARTES PROJETS --- */
-.cyber-card {
-    background: #161920;
     border: 1px solid var(--border-color);
+}
+
+.cert-status { font-size: 1.5rem; }
+
+/* Fenêtre Pop-up (Modale) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
     padding: 20px;
-    transition: 0.3s;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+    background: var(--bg-main);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 16px;
+    max-width: 650px;
+    width: 100%;
+    padding: 32px;
     position: relative;
 }
-.cyber-card:hover {
-    border-color: var(--neon-cyan);
-    transform: translateY(-5px);
-}
-.card-top {
-    font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;
-    border-bottom: 1px dashed var(--border-color); padding-bottom: 5px;
-}
-.cyber-card h3 {
-    color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;
-}
-.cyber-card p {
-    font-size: 0.95rem; color: #8a96a3;
+
+.modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    cursor: pointer;
 }
 
-/* --- FOOTER --- */
+.modal-section { margin: 18px 0; }
+.modal-section h5 { color: var(--accent-gold); margin-bottom: 6px; }
+.modal-section ul { padding-left: 20px; color: var(--text-secondary); }
+
 footer {
-    text-align: center;
-    padding: 30px;
+    margin-top: 80px;
+    padding: 30px 0;
     border-top: 1px solid var(--border-color);
-    margin-top: 50px;
-    background: var(--panel-bg);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
-.footer-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; }
-.social-links a {
-    color: var(--neon-yellow);
-    text-decoration: none;
-    margin: 0 10px;
-    transition: 0.3s;
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
 }
-.social-links a:hover { text-shadow: 0 0 8px var(--neon-yellow); }
+
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: var(--accent-cyan); text-decoration: none; }
+
+/* Adaptation Mobile & Tablette */
+@media (max-width: 960px) {
+    .bento-hero, .topology-container, .missions-grid, .projects-grid, .timeline-Wrapper {
+        grid-template-columns: 1fr;
+    }
+    .nav-links { display: none; }
+}

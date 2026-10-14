@@ -1,124 +1,479 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Coordinateur SI</title>
+    <title>Luka Ribeiro Da Costa | Coordinateur SI & Réseaux</title>
+    <!-- Police moderne pour l'interface + Police technique pour le terminal -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Police technique pour le style Terminal/HUD -->
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- HUD OVERLAY : Effet visuel de scan d'écran -->
-    <div class="scanlines"></div>
-
-    <header class="hud-header">
-        <div class="logo">
-            <span class="blink">>_</span> SYS_ADMIN_PORTFOLIO
+    <!-- ==========================================
+         BARRE DE NAVIGATION SUPÉRIEURE (STYLE NOC)
+    =========================================== -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <span class="status-dot"></span>
+            <span class="brand-text">LUKA.RDC // <span class="accent-gold">SI_COORDINATOR</span></span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#profil">[ PROFIL ]</a></li>
-                <li><a href="#missions">[ MISSIONS_ENTREPRISE ]</a></li>
-                <li><a href="#projets">[ PROJETS_E4 ]</a></li>
-                <!-- [ INSERER LE LIEN DE TA PAGE VEILLE ICI ] -->
-                <li><a href="veille.html">[ VEILLE_TECH ]</a></li>
-                <!-- [ INSERER LE LIEN DE TON CV PDF ICI ] -->
-                <li><a href="CV_Luka.pdf" target="_blank" class="btn-neon">[ DL_CV.exe ]</a></li>
-            </ul>
+
+        <nav class="nav-links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#topologie">Topologie SI</a>
+            <a href="#missions">Missions Renault</a>
+            <a href="#projets">Projets E4/E5</a>
+            <a href="#parcours">Parcours</a>
+            <!-- 🔗 [LIEN À REMPLACER] : Lien vers ta future page de veille technologique -->
+            <a href="veille.html" class="nav-highlight">Veille Tech</a>
         </nav>
+
+        <div class="nav-actions">
+            <!-- Bouton pour changer entre Mode Sombre (Cyber) et Mode Clair (RH/Pro) -->
+            <button id="theme-toggle" class="btn-icon" title="Changer de thème (Sombre / Clair)">
+                🌓 Thème
+            </button>
+            <!-- 🔗 [LIEN À REMPLACER] : Mets le nom exact de ton fichier CV en PDF -->
+            <a href="CV_Luka_Ribeiro.pdf" target="_blank" class="btn-primary">Télécharger CV</a>
+        </div>
     </header>
 
-    <main>
-        <!-- SECTION PROFIL -->
-        <section id="profil" class="panel">
-            <div class="panel-header">
-                <h2>// ID_UTILISATEUR</h2>
-            </div>
-            <div class="panel-content flex-row">
-                <div class="text-zone">
-                    <h1>Luka Ribeiro Da Costa</h1>
-                    <h3 class="subtitle">Coordinateur des Systèmes d'Information - Alternant BTS SIO SISR</h3>
-                    <!-- [ INSERER TA PRESENTATION GAUTHIER ICI LORSQUE TU SERAS PRET (RGPD OK) ] -->
-                    <p class="pitch">
-                        <!-- Texte temporaire à remplacer -->
-                        [ COMMENTAIRE : Insérer ici le texte de présentation rédigé. Garder un ton factuel et orienté infrastructure. ] 
-                        Actuellement en charge de l'infrastructure informatique de 3 concessions au sein du groupe Renault. 
-                        J'assure le maintien en conditions opérationnelles, la sécurité des accès et le déploiement matériel.
-                    </p>
-                </div>
-                <div class="stats-zone">
-                    <p>STATUT : <span class="status-ok">EN LIGNE</span></p>
-                    <p>LOCALISATION : <span class="highlight">RENAULT (3 Concessions)</span></p>
-                    <p>HABILITATION : <span class="highlight">ADMIN_NIV_2</span></p>
-                </div>
-            </div>
-        </section>
+    <main class="container">
 
-        <!-- SECTION MISSIONS ENTREPRISE -->
-        <section id="missions" class="panel">
-            <div class="panel-header">
-                <h2>// LOGS_MISSIONS_ENTREPRISE</h2>
-            </div>
-            <div class="panel-content grid-2">
-                <div class="data-block">
-                    <h4>> Support & Parc</h4>
-                    <p>Administration du parc informatique via <strong>PSSoft</strong>. Gestion complète du cycle de vie utilisateur (Onboarding / Offboarding) et contrôles de cohérence des droits et matériels.</p>
-                </div>
-                <div class="data-block">
-                    <h4>> Déploiement</h4>
-                    <p>Pilotage des campagnes de masterisation de postes de travail et renouvellement des flottes de smartphones pour les collaborateurs.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION PROJETS E4 -->
-        <section id="projets" class="panel">
-            <div class="panel-header">
-                <h2>// EXTRACTION_PROJETS_E4</h2>
-            </div>
-            <!-- [ INSERER LE LIEN VERS TON TABLEAU DE SYNTHESE E4 ICI ] -->
-            <a href="Tableau_Synthese_E4.pdf" target="_blank" class="btn-neon mb-20">>> TELECHARGER_TABLEAU_SYNTHESE_E4</a>
+        <!-- ==========================================
+             SECTION 1 : BENTO GRID (PROFIL + TERMINAL)
+        =========================================== -->
+        <section id="dashboard" class="bento-hero">
             
-            <div class="grid-3">
+            <!-- Carte Principale : Présentation & KPIs -->
+            <div class="bento-card hero-profile">
+                <div class="badge-container">
+                    <span class="badge badge-gold">Alternance Groupe Renault</span>
+                    <span class="badge badge-cyan">BTS SIO - Option SISR</span>
+                </div>
+
+                <h1>Luka Ribeiro Da Costa</h1>
+                <h2 class="hero-subtitle">Coordinateur des Systèmes d'Information</h2>
+
+                <!-- 🔴 [À MODIFIER - RGPD OK] : Insère ta présentation personnelle ci-dessous -->
+                <p class="hero-description">
+                    Spécialisé dans l'administration des systèmes, la sécurité des réseaux et le pilotage d'infrastructures multisites. J'assure actuellement le maintien en conditions opérationnelles (MCO), la gestion de parc et l'accompagnement des utilisateurs sur un périmètre de 3 concessions automobiles.
+                </p>
+
+                <!-- Indicateurs clés (KPIs) très appréciés sur LinkedIn -->
+                <div class="kpi-grid">
+                    <div class="kpi-box">
+                        <span class="kpi-number">3</span>
+                        <span class="kpi-label">Concessions Gérées (LAN/WAN)</span>
+                    </div>
+                    <div class="kpi-box">
+                        <span class="kpi-number">N2</span>
+                        <span class="kpi-label">Support & Pilotage Prestataires</span>
+                    </div>
+                    <div class="kpi-box">
+                        <span class="kpi-number">100%</span>
+                        <span class="kpi-label">Contrôle Cohérence & Sécurité</span>
+                    </div>
+                </div>
+
+                <!-- 🔗 [LIENS À REMPLACER] : Tes liens de réseaux pro et contact -->
+                <div class="hero-buttons">
+                    <a href="https://www.linkedin.com/in/TON-PROFIL-ICI" target="_blank" class="btn-primary">Me contacter via LinkedIn ↗</a>
+                    <a href="https://github.com/TON-PSEUDO-ICI" target="_blank" class="btn-secondary">Mon GitHub ↗</a>
+                </div>
+            </div>
+
+            <!-- Carte Droite : Terminal Interactif (CLI) -->
+            <div class="bento-card terminal-card">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">bash — luka@renault-si-noc:~</span>
+                </div>
+
+                <div id="terminal-output" class="terminal-body">
+                    <p class="cmd-system">Bienvenue sur le terminal d'administration de Luka RDC.</p>
+                    <p class="cmd-system">Tapez <span class="accent-cyan">'help'</span> ou cliquez sur une commande ci-dessous :</p>
+                </div>
+
+                <div class="terminal-input-line">
+                    <span class="prompt">luka@si-noc:~$</span>
+                    <input type="text" id="terminal-input" placeholder="Entrez une commande (help, whoami, skills...)" autocomplete="off">
+                </div>
+
+                <!-- Boutons rapides pour les recruteurs RH qui ne tapent pas au clavier -->
+                <div class="terminal-shortcuts">
+                    <button onclick="executeCommand('whoami')">whoami</button>
+                    <button onclick="executeCommand('skills')">skills</button>
+                    <button onclick="executeCommand('renault')">renault</button>
+                    <button onclick="executeCommand('clear')">clear</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             SECTION 2 : TOPOLOGIE RÉSEAU INTERACTIVE
+        =========================================== -->
+        <section id="topologie" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">// ARCHITECTURE & CARTOGRAPHIE SI</span>
+                    <h3>Topologie Interactive de mon Périmètre</h3>
+                </div>
+                <p class="section-hint">👉 Cliquez sur un élément du réseau pour inspecter mes actions techniques</p>
+            </div>
+
+            <div class="topology-container">
+                <!-- Schéma visuel à gauche -->
+                <div class="bento-card topology-map">
+                    <div class="topo-level">
+                        <button class="topo-node active" data-node="firewall" onclick="selectNode('firewall', this)">
+                            <span class="node-icon">🛡️</span>
+                            <span class="node-title">Sécurité & Pare-feu</span>
+                            <span class="node-sub">IPFire / Politiques SI</span>
+                        </button>
+                    </div>
+
+                    <div class="topo-connector-vertical"></div>
+
+                    <div class="topo-level">
+                        <button class="topo-node" data-node="coeur" onclick="selectNode('coeur', this)">
+                            <span class="node-icon">🖧</span>
+                            <span class="node-title">Cœur de Réseau & WAN</span>
+                            <span class="node-sub">Routage OSPF / Inter-VLAN</span>
+                        </button>
+                    </div>
+
+                    <div class="topo-connector-vertical"></div>
+
+                    <div class="topo-level topo-grid-3">
+                        <button class="topo-node" data-node="ad" onclick="selectNode('ad', this)">
+                            <span class="node-icon">🖥️</span>
+                            <span class="node-title">Serveurs & AD</span>
+                            <span class="node-sub">GPO / DHCP / Droits</span>
+                        </button>
+
+                        <button class="topo-node" data-node="concessions" onclick="selectNode('concessions', this)">
+                            <span class="node-icon">🏢</span>
+                            <span class="node-title">3 Concessions Renault</span>
+                            <span class="node-sub">Locaux Tech / LAN / ToIP</span>
+                        </button>
+
+                        <button class="topo-node" data-node="parc" onclick="selectNode('parc', this)">
+                            <span class="node-icon">💻</span>
+                            <span class="node-title">Parc & Mobilité</span>
+                            <span class="node-sub">PSSoft / GLPI / Masters</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Panneau de détails à droite (mis à jour dynamiquement via script.js) -->
+                <div class="bento-card topology-details">
+                    <span id="topo-badge" class="badge badge-cyan">ZONE SÉCURITÉ</span>
+                    <h4 id="topo-title">Sécurité & Pare-feu (IPFire)</h4>
+                    <p id="topo-desc">
+                        Filtrage des flux réseau, segmentation et veille au strict respect des règles de sécurité informatique et de la déontologie sur l'ensemble du périmètre.
+                    </p>
+                    <div class="topo-meta">
+                        <h5>Actions & Protocoles associés :</h5>
+                        <ul id="topo-list">
+                            <li>Déploiement et configuration de pare-feu IPFire</li>
+                            <li>Contrôle de cohérence des accès utilisateurs métier par métier</li>
+                            <li>Application des consignes de sécurité sur site</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 3 : MISSIONS ENTREPRISE (RENAULT)
+        =========================================== -->
+        <section id="missions" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">// ALTERNANCE COORDINATEUR SI</span>
+                    <h3>Pôles de Responsabilités en Entreprise</h3>
+                </div>
+            </div>
+
+            <!-- 🔴 [À MODIFIER SI BESOIN] : Synthèse structurée de ta fiche de poste -->
+            <div class="missions-grid">
+                <div class="bento-card mission-card">
+                    <div class="mission-icon">🌐</div>
+                    <h4>Infrastructure LAN / WAN & Locaux</h4>
+                    <ul>
+                        <li>Assistance à la DSI sur les réseaux LAN/WAN en liaison avec la DSI centrale, les prestataires et l'opérateur télécom.</li>
+                        <li>Création et maintien à jour de la cartographie technique et fonctionnelle du SI sur les 3 concessions.</li>
+                        <li>Garant de la bonne tenue des locaux techniques (câblage, brassage, sécurité physique).</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card mission-card">
+                    <div class="mission-icon">🛠️</div>
+                    <h4>Support N2, Parc & Téléphonie</h4>
+                    <ul>
+                        <li>Assistance de niveau 2 et pilotage des prestataires dans le respect des délais contractuels (SLA).</li>
+                        <li>Administration de la base de Gestion de Parc (PSSoft) et réceptions administratives des matériels.</li>
+                        <li>Gestion du réseau téléphonique (maintenance, dépannage, ajout de points) et campagnes de déploiement (postes, smartphones).</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card mission-card">
+                    <div class="mission-icon">🔐</div>
+                    <h4>Sécurité, Habilitations & Cycle de Vie</h4>
+                    <ul>
+                        <li>Gestion complète de l'Onboarding et de l'Offboarding (entrées/sorties des collaborateurs et remontée DSI).</li>
+                        <li>Gestion des droits d'accès aux différents SI métier par métier et contrôles de cohérence réguliers.</li>
+                        <li>Garant de la déontologie d'utilisation de l'informatique et du respect des règles de sécurité.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card mission-card">
+                    <div class="mission-icon">📊</div>
+                    <h4>Gouvernance SI & Reporting</h4>
+                    <ul>
+                        <li>Participation au Codir (Comité de Direction) des établissements pour informer sur les sujets IT.</li>
+                        <li>Premier niveau d'analyse des expressions de besoins locaux et études d'opportunité.</li>
+                        <li>Reporting hebdomadaire auprès du Responsable des Systèmes d'Information (RSI) Plaque.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4 : PROJETS E4 & E5 (AVEC FILTRES)
+        =========================================== -->
+        <section id="projets" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">// RÉALISATIONS TECHNIQUES</span>
+                    <h3>Projets & Situations Professionnelles (E4 / E5)</h3>
+                </div>
+                <!-- 🔗 [LIEN À REMPLACER QUAND PRÊT] : Ton futur tableau de synthèse PDF -->
+                <a href="Tableau_Synthese_E4.pdf" target="_blank" class="btn-gold">
+                    📄 Tableau de Synthèse E4 (En cours d'acquisition)
+                </a>
+            </div>
+
+            <!-- Barre de filtres dynamiques -->
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterProjects('all', this)">Tous les projets</button>
+                <button class="filter-btn" onclick="filterProjects('entreprise', this)">🏢 Entreprise (Renault)</button>
+                <button class="filter-btn" onclick="filterProjects('ecole', this)">🎓 École & Homelab</button>
+                <button class="filter-btn" onclick="filterProjects('e4', this)">📋 Épreuve E4 (Parc & Services)</button>
+                <button class="filter-btn" onclick="filterProjects('e5', this)">🛡️ Épreuve E5 (Infra & Cyber)</button>
+            </div>
+
+            <!-- Grille des cartes de projets -->
+            <div class="projects-grid">
+
                 <!-- PROJET 1 -->
-                <div class="cyber-card">
-                    <div class="card-top">ID: PRJ-01</div>
-                    <h3>Administration Active Directory & Services</h3>
-                    <p><strong>Environnement :</strong> Windows Server</p>
-                    <p>Gestion avancée de l'AD, création et application de GPO pour sécuriser l'environnement utilisateur. Installation et configuration du rôle DHCP pour l'adressage client.</p>
+                <div class="bento-card project-card" data-category="entreprise e4">
+                    <div class="project-top">
+                        <span class="badge badge-gold">Renault (3 Concessions)</span>
+                        <span class="badge badge-outline">Épreuve E4</span>
+                    </div>
+                    <h4>Administration de Parc & Cycle de Vie (PSSoft)</h4>
+                    <p>Gestion complète de l'inventaire matériel/logiciel, processus d'Onboarding/Offboarding et contrôle de cohérence des habilitations utilisateurs.</p>
+                    <div class="tech-tags">
+                        <span>PSSoft</span><span>IAM / Droits</span><span>Audit Parc</span>
+                    </div>
+                    <button class="btn-card" onclick="openProjectModal('prj1')">Voir les détails & preuves →</button>
                 </div>
 
                 <!-- PROJET 2 -->
-                <div class="cyber-card">
-                    <div class="card-top">ID: PRJ-02</div>
-                    <h3>Routage Avancé & Sécurité</h3>
-                    <p><strong>Environnement :</strong> Cisco / IPFire</p>
-                    <p>Mise en place d'un routage inter-VLAN dynamique utilisant le protocole OSPF. Déploiement et configuration d'un pare-feu IPFire pour segmenter et protéger le réseau.</p>
+                <div class="bento-card project-card" data-category="entreprise e4">
+                    <div class="project-top">
+                        <span class="badge badge-gold">Renault</span>
+                        <span class="badge badge-outline">Épreuve E4</span>
+                    </div>
+                    <h4>Campagne de Masterisation & Flotte Mobile</h4>
+                    <p>Déploiement massif d'images systèmes standardisées sur les postes clients et renouvellement complet de la flotte de smartphones collaborateurs.</p>
+                    <div class="tech-tags">
+                        <span>Masterisation</span><span>Déploiement</span><span>Mobilité</span>
+                    </div>
+                    <button class="btn-card" onclick="openProjectModal('prj2')">Voir les détails & preuves →</button>
                 </div>
 
                 <!-- PROJET 3 -->
-                <div class="cyber-card">
-                    <div class="card-top">ID: PRJ-03</div>
-                    <h3>Gestion de Parc Open Source</h3>
-                    <p><strong>Environnement :</strong> GLPI</p>
-                    <p>Déploiement en environnement scolaire d'une solution GLPI pour la gestion des incidents (Ticketing) et l'inventaire matériel, en miroir des process PSSoft utilisés en entreprise.</p>
+                <div class="bento-card project-card" data-category="ecole e4 e5">
+                    <div class="project-top">
+                        <span class="badge badge-cyan">École / Lab</span>
+                        <span class="badge badge-outline">E4 & E5</span>
+                    </div>
+                    <h4>Infrastructure Active Directory, GPO & DHCP</h4>
+                    <p>Mise en place d'un contrôleur de domaine Windows Server, structuration des OU, durcissement par GPO et distribution IP automatique via DHCP.</p>
+                    <div class="tech-tags">
+                        <span>Windows Server</span><span>AD DS / GPO</span><span>DHCP</span>
+                    </div>
+                    <button class="btn-card" onclick="openProjectModal('prj3')">Voir les détails & preuves →</button>
+                </div>
+
+                <!-- PROJET 4 -->
+                <div class="bento-card project-card" data-category="ecole e5">
+                    <div class="project-top">
+                        <span class="badge badge-cyan">École / Lab</span>
+                        <span class="badge badge-outline">Épreuve E5</span>
+                    </div>
+                    <h4>Architecture Réseau : Routage Inter-VLAN & OSPF</h4>
+                    <p>Segmentation logique d'un réseau d'entreprise en VLANs et implémentation du routage dynamique OSPF pour assurer la haute disponibilité.</p>
+                    <div class="tech-tags">
+                        <span>Cisco</span><span>VLAN (802.1Q)</span><span>OSPF</span>
+                    </div>
+                    <button class="btn-card" onclick="openProjectModal('prj4')">Voir les détails & preuves →</button>
+                </div>
+
+                <!-- PROJET 5 -->
+                <div class="bento-card project-card" data-category="ecole e5">
+                    <div class="project-top">
+                        <span class="badge badge-cyan">École / Lab</span>
+                        <span class="badge badge-outline">Épreuve E5 Cyber</span>
+                    </div>
+                    <h4>Sécurisation Périmétrique avec Pare-feu IPFire</h4>
+                    <p>Déploiement d'une passerelle de sécurité IPFire, segmentation des zones (WAN, LAN, DMZ) et configuration des règles de filtrage réseau.</p>
+                    <div class="tech-tags">
+                        <span>IPFire</span><span>Firewalling</span><span>Segmentation</span>
+                    </div>
+                    <button class="btn-card" onclick="openProjectModal('prj5')">Voir les détails & preuves →</button>
+                </div>
+
+                <!-- PROJET 6 -->
+                <div class="bento-card project-card" data-category="ecole e4">
+                    <div class="project-top">
+                        <span class="badge badge-cyan">École / Lab</span>
+                        <span class="badge badge-outline">Épreuve E4</span>
+                    </div>
+                    <h4>Déploiement ITSM & Gestion d'Incidents sous GLPI</h4>
+                    <p>Installation d'un serveur GLPI pour centraliser l'inventaire du parc et structurer le support technique (Ticketing N1/N2) selon les bonnes pratiques ITIL.</p>
+                    <div class="tech-tags">
+                        <span>GLPI</span><span>Linux</span><span>Ticketing ITIL</span>
+                    </div>
+                    <button class="btn-card" onclick="openProjectModal('prj6')">Voir les détails & preuves →</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 5 : PARCOURS & CERTIFICATIONS
+        =========================================== -->
+        <section id="parcours" class="section-block">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">// ÉVOLUTION & RECONNAISSANCE</span>
+                    <h3>Parcours Professionnel & Certifications</h3>
+                </div>
+            </div>
+
+            <div class="timeline-Wrapper">
+                <!-- Timeline à gauche -->
+                <div class="bento-card timeline-card">
+                    <h4>Frise Chronologique</h4>
+                    <div class="timeline">
+                        <!-- 🔴 [À MODIFIER] : Mets tes vraies dates -->
+                        <div class="timeline-item">
+                            <span class="timeline-date">2024 - 2026 (En cours)</span>
+                            <h5>Coordinateur des Systèmes d'Information (Alternance)</h5>
+                            <p class="timeline-place">Groupe Renault — Périmètre de 3 Concessions</p>
+                            <p>Gestion de parc, support N2, réseau LAN/WAN, sécurité des accès et participation aux Codir d'établissements.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-date">2024 - 2026 (En cours)</span>
+                            <h5>BTS Services Informatiques aux Organisations (Option SISR)</h5>
+                            <p class="timeline-place">Spécialité Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                            <p>Apprentissage approfondi de l'administration Windows/Linux, du routage dynamique (OSPF), de la virtualisation et de la cybersécurité.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications & Compétences clés à droite -->
+                <div class="bento-card certs-card">
+                    <h4>Certifications & Objectifs</h4>
+                    <!-- 🔴 [À MODIFIER] : Ajuste selon les certifications que tu passes -->
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <span class="cert-status">🛡️</span>
+                            <div>
+                                <h5>MOOC SecNumAcadémie (ANSSI)</h5>
+                                <p>Sensibilisation à la cybersécurité et hygiène informatique.</p>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-status">🌐</span>
+                            <div>
+                                <h5>Atelier RGPD (CNIL)</h5>
+                                <p>Protection des données personnelles et conformité SI.</p>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-status">⚡</span>
+                            <div>
+                                <h5>Homelab & Automatisation (En cours)</h5>
+                                <p>Pratique personnelle sur la supervision et l'administration système avancée.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- ==========================================
+         FENÊTRE MODALE (POP-UP DÉTAILS PROJETS)
+    =========================================== -->
+    <div id="project-modal" class="modal-overlay" onclick="closeProjectModal(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModalDirect()">✕</button>
+            <div id="modal-tags" class="badge-container"></div>
+            <h3 id="modal-title">Titre du projet</h3>
+            
+            <div class="modal-section">
+                <h5>📌 Contexte & Objectifs</h5>
+                <p id="modal-context"></p>
+            </div>
+
+            <div class="modal-section">
+                <h5>⚙️ Réalisations techniques</h5>
+                <ul id="modal-tasks"></ul>
+            </div>
+
+            <div class="modal-section">
+                <h5>✅ Compétences BTS SIO validées</h5>
+                <p id="modal-skills" class="accent-cyan"></p>
+            </div>
+
+            <div class="modal-footer">
+                <a id="modal-doc-link" href="#" target="_blank" class="btn-primary">
+                    📄 Consulter la documentation technique (PDF)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PIED DE PAGE (FOOTER)
+    =========================================== -->
     <footer>
-        <div class="footer-content">
-            <p>CONNEXION SECURISEE // BTS SIO SISR 2026 // LUKA RIBEIRO DA COSTA</p>
-            <!-- [ INSERER TON LIEN LINKEDIN ET GITHUB ICI EN REMPLACANT LE # ] -->
-            <div class="social-links">
-                <a href="#">[ LINKEDIN ]</a>
-                <a href="#">[ GITHUB ]</a>
+        <div class="container footer-flex">
+            <p>© 2026 Luka Ribeiro Da Costa — Portfolio BTS SIO SISR (Conforme RGPD)</p>
+            <!-- 🔗 [LIENS À REMPLACER] -->
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/TON-PROFIL-ICI" target="_blank">LinkedIn</a>
+                <a href="https://github.com/TON-PSEUDO-ICI" target="_blank">GitHub</a>
+                <a href="veille.html">Veille Technologique</a>
             </div>
         </div>
     </footer>
 
+    <!-- Connexion au fichier JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
